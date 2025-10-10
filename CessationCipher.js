@@ -50,7 +50,9 @@ for( _i_ in _cipher ) {
 document.body.innerHTML = '<label>' + _bin + '</label><br/>';
 
 let _str = bin2str( _bin );
-document.body.innerHTML += '<pre>' + _str + '</pre>';
+document.body.innerHTML += '<pre style="background-color: black;width: min-content;">' + _str + '</pre>';
+
+document.body.innerHTML += '<a href="https://github.com/qarlific/CessationCipher/">https://github.com/qarlific/CessationCipher/</a>';
 
 // Returns a binary string as ascii text
 function bin2str( pStr )  {
