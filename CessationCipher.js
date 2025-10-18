@@ -1,57 +1,24 @@
 
 
-let __cipherKey = '1100111101001111001010010101109';
-let __cipher =  // Henkevä temple
-               '2241111132121111112\
-                031141124111131113\
-                0121141111112111211\
-                222032421512112111\
-                303241111411111211\
-                1120'+
-                // Barren Temple
-               '12242114111212\
-                212011115224122121\
-                112012151111412221\
-                230122422412212111\
-                201134111141111121\
-                211101'+
-                // Watchtower
-               '21511241112122\
-                301215134111221212\
-                0121111222412111221\
-                203152114111221113\
-                01134224212221120\
-                12242114'+
-                // Pillar
-               '121121113031511241\
-                211122120315211411\
-                122111201211511241\
-                121111230315112412\
-                2111113012114221111\
-                21211213012111111112\
-                42111212110221412\
-                14222111233151115\
-                121121230324224212\
-                221120311411241123\
-                121203151342121111';
-
-// Pillar pic https://youtu.be/EowPFSc_jqI?feature=shared&t=217
+let _cipherKey = '110011110100111100101001010110';
+let _cipher = '224111113212111111203114112411113111301211411111121112112220324215121121113032411114111112111120122421141112122120111152241221211120121511114122212'+
+              '301224224122121112011341111411111212111012151124111212230121513411122121201211112224121112212031521141112211130113422421222112012242114'+
+              '12112111303151124121112212031521141112211120121151124112111123031511241221111130121142211112121121301211111111242111212110221412142221112303151115121121230324224212221120311411241123121203151342121111';
 
 let _index = 0;
-let _cipher = __cipher.replace(/ /g, '');
-let _bin = '';    // Deciphered binary string
+let _binStr = '';    // Deciphered binary string'
+
 for( _i_ in _cipher ) {
     let _num = parseInt( _cipher[_i_] );
     if( _num == 0 )
         continue;
     _index += _num;
-    _bin += __cipherKey[ _index % 30 ];
+    _binStr += _cipherKey[ _index % _cipherKey.length ];
 }
-document.body.innerHTML = '<label>' + _bin + '</label><br/>';
+document.body.innerHTML = '<label>' + _binStr + '</label><br/>';
 
-let _str = bin2str( _bin );
+let _str = bin2str( _binStr );
 document.body.innerHTML += '<pre style="background-color: black;width: min-content;">' + _str + '</pre>';
-
 document.body.innerHTML += '<a href="https://github.com/qarlific/CessationCipher/">https://github.com/qarlific/CessationCipher/</a>';
 
 // Returns a binary string as ascii text
@@ -72,6 +39,6 @@ function bin2str( pStr )  {
 // Outputs to console the binary version of a character, for testing
 function char2bin( pChar )  {
     const charCode = pChar.charCodeAt(0);
-    const charBin = charCode.toString(2);
-    console.log( pChar, charCode, charBin, charBin.length );
+    const charBin = (0b100000000 + charCode).toString(2).substring(1);
+    console.log( pChar, charCode, charBin );
 }
